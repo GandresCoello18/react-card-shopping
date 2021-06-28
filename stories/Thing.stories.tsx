@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import { CardShopping } from '../src';
+import CardShopping from '../src';
 
 const meta: Meta = {
   title: 'Welcome',

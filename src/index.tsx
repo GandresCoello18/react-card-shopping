@@ -1,30 +1,51 @@
 import React from 'react';
 import './card.css';
+import { calculatePrice } from './util/price';
 
-export const CardShopping = () => {
+interface Props {
+  title: string
+  avalible: number
+  price: number
+  discount: number
+  source: string
+  className?: string
+}
+
+export const defaultBaseColor = "#a09c9d";
+
+const CardShopping = ({ title, avalible, price, discount, source, className }: Props) => {
+  
+  let classCardDefault = "product display-flex flex-direction";
+
+  if (className) {
+    classCardDefault += " " + className;
+  }
+
   return (
     <div style={{ width: 400 }}>
-      <div className="product display-flex flex-direction">
+      <div className={classCardDefault}>
         <a className="img-prod">
           <img
             width="100%"
-            className="p-4"
-            src={`http://res.cloudinary.com/cici/image/upload/v1616791874/products/3cebe896-432b-46fb-8030-edf71c02bf58`}
-            alt={'titulo del producto'}
+            src={source}
+            alt={title}
           />
           <div className="overlay" />
         </a>
       <div className="text paddind-10">
-        <h3>{'Este es el titulo del producto'}</h3>
+        <h3>{title}</h3>
         <div className="cat" style={{ width: '100%' }}>
-          <span>{155} Disponibles</span>
+          <span>{avalible} Disponibles</span>
         </div>
         <p className="price">
-          <strong>${14}</strong>
+          <strong>${calculatePrice({
+            discount,
+            price
+          })}</strong>
           {1 && (
             <>
-              <span className="tachado marginLeft-10">US ${20}</span> &nbsp;{' '}
-              <span className="tag-discount marginLeft-10">-{7}%</span>
+              <span className="tachado marginLeft-10">US ${price}</span> &nbsp;{' '}
+              <span className="tag-discount marginLeft-10">-{discount}%</span>
             </>
           )}
         </p>
@@ -57,3 +78,13 @@ export const CardShopping = () => {
     </div>
   );
 };
+
+export default CardShopping
+
+CardShopping.defaultProps = {
+  title: 'So impressed with how comfortable and light these trainers are, decided to experiment with levitation',
+  avalible: 0,
+  discount: 0,
+  price: 0,
+  source: 'https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60'
+}
