@@ -271,3 +271,15 @@
   .flex-direction {
     flex-direction: column
   }
+  .action-alert {
+    position: absolute;
+    right: 100px;
+    bottom: 10px;
+  }
+  .action-alert button {
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 7px;
+    border-bottom-left-radius: 0;
+  }

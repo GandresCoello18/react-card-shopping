@@ -1,19 +1,25 @@
 import React, { CSSProperties, Fragment } from 'react';
 import './card.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import { css } from '@emotion/css';
 import { calculatePrice } from './util/price';
+import { ConfirmCart } from './alert';
 
-interface Props {
+export interface AlertCart {
   title: string;
   avalible: number;
   price: number;
   discount: number;
   source: string;
+}
+
+interface Props extends AlertCart {
   tag?: string;
   color?: string;
   className?: string;
   style?: CSSProperties;
-  isFav?: boolean;
+  isFav: boolean;
+  alert: boolean
   addToCart?: () => void;
   favorite?: () => void;
 }
@@ -31,6 +37,7 @@ const CardShopping = ({
   color,
   style,
   isFav,
+  alert,
   addToCart,
   favorite,
 }: Props) => {
@@ -42,6 +49,16 @@ const CardShopping = ({
 
   if (color) {
     defaultBaseColor = color;
+  }
+
+  const handleCart = () => {
+    if(addToCart){
+      addToCart();
+
+      if(alert){
+        ConfirmCart({ source, title, discount, price, avalible: 0 })
+      }
+    }
   }
 
   return (
@@ -95,7 +112,7 @@ const CardShopping = ({
                     background-color: ${defaultBaseColor} !important;
                   }
                 `}`}
-                onClick={addToCart}
+                onClick={handleCart}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -158,6 +175,8 @@ CardShopping.defaultProps = {
   avalible: 0,
   discount: 0,
   price: 0,
+  alert: false,
+  isFav: false,
   source:
     'https://images.unsplash.com/photo-1491553895911-0055eca6402d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
 };
