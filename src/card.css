@@ -182,22 +182,14 @@
   .product .text .bottom-area a.buy-now i {
     font-size: 16px;
   }
-  .product .text .bottom-area a.add-to-cart {
-    background: #000000;
-    color: #fff;
-  }
-  .product .text .bottom-area a.add-to-cart:hover {
-    background: #a09c9d;
-    color: #fff;
-  }
   .product .text .bottom-area a.buy-now {
     background: #fff;
     color: #000000;
   }
-  .product .text .bottom-area a.buy-now:hover {
+  /* .product .text .bottom-area a.buy-now:hover {
     background: #a09c9d;
     color: #fff;
-  }
+  } */
   @media (max-width: 991.98px) {
     .product .text .bottom-area {
       opacity: 1;
@@ -260,7 +252,7 @@
     color: #999;
     text-decoration: line-through;
   }
-  .marginLeft-10 {
+  .margin-left-10 {
     margin-left: 10px;
   }
   .paddind-10 {
