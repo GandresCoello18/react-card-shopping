@@ -62,7 +62,6 @@ const CardShopping = ({
   }
 
   return (
-    <div style={{ width: 400 }}>
       <div className={classCardDefault} style={{ ...style }}>
         <a className="img-prod">
           {tag ? (
@@ -163,7 +162,6 @@ const CardShopping = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
