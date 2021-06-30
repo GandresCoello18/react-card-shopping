@@ -1,5 +1,4 @@
 import React, { CSSProperties, Fragment } from 'react';
-import './card.css';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { css } from '@emotion/css';
 import { calculatePrice } from './util/price';
