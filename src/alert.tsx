@@ -1,6 +1,7 @@
 import React from 'react';
 import { confirmAlert } from 'react-confirm-alert';
-import { AlertCart } from '.';
+import { AlertCart, defaultTextColor } from '.';
+import { css } from '@emotion/css';
 import { calculatePrice } from './util/price';
 
 export const ConfirmCart = ({ source, title, discount, price }: AlertCart) => {
@@ -16,7 +17,9 @@ export const ConfirmCart = ({ source, title, discount, price }: AlertCart) => {
                 Agregado al carrito
               </h2>
 
-              <a className="img-prod display-flex">
+              <a className={`img-prod display-flex ${css`
+                color: ${defaultTextColor} !important;
+              `}`}>
                 <img width="40%" src={source} alt={title} />
                 <div className="paddind-10">
                   <h3>{title}</h3>

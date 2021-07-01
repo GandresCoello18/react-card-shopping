@@ -19,7 +19,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = args => <CardShopping addToCart={() => console.log('press cart')} {...args} />;
+const Template: Story = args => <CardShopping tag='9% descuento' addToCart={() => console.log('press cart')} {...args} />;
 
 export const Default = Template.bind({});
 

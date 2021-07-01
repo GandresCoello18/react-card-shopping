@@ -15,6 +15,7 @@ export interface AlertCart {
 interface Props extends AlertCart {
   tag?: string;
   color?: string;
+  textColor?: string;
   className?: string;
   style?: CSSProperties;
   isFav: boolean;
@@ -24,6 +25,7 @@ interface Props extends AlertCart {
 }
 
 export let defaultBaseColor = '#ede7e8';
+export let defaultTextColor = '#212529';
 
 const CardShopping = ({
   title,
@@ -34,6 +36,7 @@ const CardShopping = ({
   className,
   tag,
   color,
+  textColor,
   style,
   isFav,
   alert,
@@ -50,6 +53,10 @@ const CardShopping = ({
     defaultBaseColor = color;
   }
 
+  if(textColor){
+    defaultTextColor = textColor;
+  }
+
   const handleCart = () => {
     if(addToCart){
       addToCart();
@@ -62,7 +69,10 @@ const CardShopping = ({
 
   return (
       <div className={classCardDefault} style={{ ...style }}>
-        <a className="img-prod">
+        <a className={`img-prod ${css`
+            color: ${defaultTextColor}
+          `}`}
+        >
           {tag ? (
             <span
               className={`tag-prod ${css`
@@ -108,6 +118,7 @@ const CardShopping = ({
                 className={`buy-now ${css`
                   &:hover {
                     background-color: ${defaultBaseColor} !important;
+                    color: ${defaultTextColor} !important;
                   }
                 `}`}
                 onClick={handleCart}
@@ -137,6 +148,7 @@ const CardShopping = ({
               className={`buy-now ${css`
                 &:hover {
                   background-color: ${defaultBaseColor} !important;
+                  color: ${defaultTextColor} !important;
                 }
               `}`}
               onClick={favorite}
