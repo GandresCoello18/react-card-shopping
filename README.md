@@ -20,6 +20,7 @@ El paquete exporta por defecto el componente de card.
 
 ```javascript
 import CardShopping from 'react-card-shopping';
+import 'react-card-shopping/src/card.css';
 ```
 
 Example:
@@ -44,12 +45,15 @@ Supports the following props for configuring the widget:
 
 | Prop name                   | Type                                                    | Default value  | Description                                                                            |
 | --------------------------- | ------------------------------------------------------- | -------------- | -------------------------------------------------------------------------------------- |
-| value                       | string                                                  | `''`           | The value containing markup for mentions                                               |
-| onChange                    | function (event, newValue, newPlainTextValue, mentions) | empty function | A callback that is invoked when the user changes the value in the mentions input       |
-| singleLine                  | boolean                                                 | `false`        | Renders a single line text input instead of a textarea, if set to `true`               |
-| onBlur                      | function (event, clickedSuggestion)                     | empty function | Passes `true` as second argument if the blur was caused by a mousedown on a suggestion |
-| allowSpaceInQuery           | boolean                                                 | false          | Keep suggestions open even if the user separates keywords with spaces.                 |
-| suggestionsPortalHost       | DOM Element                                             | undefined      | Render suggestions into the DOM in the supplied host element.                          |
-| inputRef                    | React ref                                               | undefined      | Accepts a React ref to forward to the underlying input element                         |
-| allowSuggestionsAboveCursor | boolean                                                 | false          | Renders the SuggestionList above the cursor if there is not enough space below         |
-| a11ySuggestionsListLabel    | string                                                  | `''`           | This label would be exposed to screen readers when suggestion popup appears            |
+| title                       | string                                                  | `'Lorem Ipsum'` | Es el titulo del producto, por defecto sera `'Lorem ipsum para ejemplos '`                                               |
+| source                      | string                                                  | fetch photo pexel | Obtiene imagen del producto del repositorio de pexel       |
+| price                       | number                                                  | `'0'`          | El precio por defecto sera 0 pero es recomendable que sea un numero mayor               |
+| discount                    | number                                                  | `'0'`          | El componente solo reacciona cuando el descuento es mayor a 0 y retorna el nuevo precio |
+| avalible                    | number                                                  | `'0'`          | Es el numero de productos que tienes disponibles.                 |
+| addToCart                   | function                                                | false          | Funcion que se ejecuta cuando dan click en el boton de AÑADIR AL CARRITO.              |
+| favorite                    | function                                                | false          | Funcion que se ejecuta cuando dan click en producto favorito.                         |
+| isFav                       | boolean                                                 | false          | Muestra si el producto es favorito o no.        |
+| alert                       | boolean                                                 | false          | Muestra una alerta dinamica mostrando al usuario el producto agregado al carrito.            |
+| tag                         | string                                                  | `''`           | Muestra una etiqueta en la parte superior de la tarjeta.            |
+| color                       | object                                                  | undefined      | Recibe 2 propiedades `'background'` y `'text'` donde modificaran los colores de la tarjeta.
+| className                   | string                                                  | `'product display-flex flex-direction'`      | Clases que usa la tarjeta.            |
