@@ -12,10 +12,14 @@ export interface AlertCart {
   source: string;
 }
 
+export interface Color {
+  background?: string
+  text?: string
+}
+
 interface Props extends AlertCart {
   tag?: string;
-  color?: string;
-  textColor?: string;
+  color?: Color;
   className?: string;
   style?: CSSProperties;
   isFav: boolean;
@@ -36,7 +40,6 @@ const CardShopping = ({
   className,
   tag,
   color,
-  textColor,
   style,
   isFav,
   alert,
@@ -49,12 +52,12 @@ const CardShopping = ({
     classCardDefault += ' ' + className;
   }
 
-  if (color) {
-    defaultBaseColor = color;
+  if (color?.background) {
+    defaultBaseColor = color?.background;
   }
 
-  if(textColor){
-    defaultTextColor = textColor;
+  if(color?.text){
+    defaultTextColor = color?.text;
   }
 
   const handleCart = () => {
